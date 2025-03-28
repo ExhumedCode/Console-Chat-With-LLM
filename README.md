@@ -14,9 +14,22 @@ A simple console-based chatbot that uses OpenRouter API with the Gemini model to
    ```
 
 2. Install required packages:
+
    ```bash
-   pip install langchain openai
+   pip install langchain openai python-dotenv
    ```
+
+3. Set up environment variables:
+   - Copy `.env.example` to `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Edit `.env` and add your OpenRouter API key:
+     ```
+     OPENROUTER_API_KEY=your_openrouter_api_key_here
+     OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
+     ```
+   - Get your API key from [OpenRouter](https://openrouter.ai/keys)
 
 ## Running the Application
 
@@ -43,3 +56,8 @@ python -m unittest test_chatbot.py
 - Simple and intuitive usage
 - Error handling for failed requests
 - Test suite for basic functionality verification
+- Secure API key management using environment variables
+
+## Security Note
+
+This project uses environment variables to securely manage API keys. Never commit your `.env` file or expose your API keys in the code. The `.env` file is already included in `.gitignore` to prevent accidental commits.

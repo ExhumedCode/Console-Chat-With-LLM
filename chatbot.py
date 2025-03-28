@@ -1,12 +1,19 @@
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # OpenRouter configuration
-OPENROUTER_API_KEY = (
-    "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"
-)
-OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL")
+
+if not OPENROUTER_API_KEY or not OPENROUTER_BASE_URL:
+    raise ValueError(
+        "Please set OPENROUTER_API_KEY and OPENROUTER_BASE_URL in your .env file"
+    )
 
 # Initialize the chat model
 chat = ChatOpenAI(
